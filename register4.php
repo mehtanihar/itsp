@@ -41,36 +41,26 @@
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-right">
-          <form class="form-inline" role="form" method="post">
-			  <div class="form-group">
-			    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-			  </div>
-			  <div class="form-group">
-			    <label class="sr-only" for="exampleInputPassword2">Password</label>
-			    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-			  </div>
-			  <div class="checkbox">
-			    <label style="color:white">
-			      <input type="checkbox"> Remember me
-			    </label>
-			  </div>
-			  <button type="submit" class="btn btn-default">Sign in</button>
-			</form>
+        
+        <div class="navbar-collapse collapse navbar-right" >
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="homepage.php">HOME</a></li>
+            <li><a href="profile.php">PROFILE</a></li>
+         
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">SOCIALIZE <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="addfriend.php">FRIEND REQUESTS</a></li>
+                <li><a href="inbox.php">MESSAGES</a></li>
+                <li><a href="notifications.php">NOTIFICATIONS</li>
+                <li><a href="logout.php">Logout</a></li>
+             
+              </ul>
+            </li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </div>
-
+    </div><br><br>
 
 
 <div class="conatiner mtb">

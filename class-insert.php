@@ -3,7 +3,7 @@
 	
 	if ( !class_exists('INSERT') ) {
 		class INSERT {
-			public function update_user($user_id, $postdata) {
+			function update_user($user_id, $postdata) {
 				global $db;
 				
 				$table = 's_users';
@@ -21,16 +21,17 @@
 				global $db;
 				
 				$table = 's_friends';
+
 				
-				$query = "
-								INSERT INTO $table (user_id, friend_id)
+				$query = mysqli_query($con,"
+								INSERT INTO s_friends (user_id, friend_id)
 								VALUES ('$user_id', '$friend_id')
-							";
+							");
 				
 				return $db->insert($query);
 			}
 			
-			public function remove_friend($user_id, $friend_id) {
+			function remove_friend($user_id, $friend_id) {
 				global $db;
 				
 				$table = 's_friends';
@@ -44,7 +45,7 @@
 				return $db->insert($query);
 			}
 			
-			public function add_status($user_id) {
+			function add_status($user_id) {
 				global $db;
 				
 				$table = 's_status';
@@ -57,7 +58,7 @@
 				return $db->insert($query);
 			}
 			
-			public function send_message() {
+			function send_message() {
 				global $db;
 				
 				$table = 's_messages';

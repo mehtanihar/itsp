@@ -53,13 +53,13 @@ if(isset($_SESSION['user'])){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
+       
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <form class="form-inline" role="form" id="login-form" method="post">
 			  <div class="form-group">
 			    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail2" name="email" placeholder="Enter email" required>
+			    <input type="email" class="form-control" id="exampleInputEmail2" name="email1" placeholder="Enter email" required>
 			  </div>
 			  <div class="form-group">
 			    <label class="sr-only" for="exampleInputPassword2">Password</label>
@@ -214,11 +214,12 @@ $("#myform").submit(function(e){
 		type:'post',
 		success:function(data){
 			console.log(data);
+
 			
 			$("#fname").parent().removeClass("has-error");
 			$("#fname-error").html("");
 			$("#lname").parent().removeClass("has-error");
-
+			$("#lname-error").html("");
 			if(data=="fnamerr"){
 				$("#fname").parent().addClass("has-error");
 				$("#fname-error").html("Name should	 only contain letters and space");

@@ -1,7 +1,7 @@
 <?php
 	if ( !class_exists ('DB') ) {
 		class DB {
-			public function __construct() {
+			 function __construct() {
 				$mysqli = new mysqli('localhost', 'root', '', 'social');
 				
 				if ($mysqli->connect_errno) {
@@ -12,13 +12,13 @@
 				$this->connection =  $mysqli;
 			}
 			
-			public function insert($query) {				
+			 function insert($query) {				
 				$result = $this->connection->query($query);
 				
 				return $result;
 			}
 			
-			public function update($query) {
+			 function update($query) {
 				$result = $this->connection->query($query);
 				
 				return $result;
@@ -26,7 +26,7 @@
 		
 	
 
-			public function select($query) {							
+			function select($query) {							
 				$result = $this->connection->query($query);
 				
 				if ( !$result ) {

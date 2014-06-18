@@ -3,7 +3,7 @@
 
 	if ( !class_exists('QUERY') ) {
 		class QUERY {
-			public function load_user_object($user_id) {
+			function load_user_object($user_id) {
 				global $db;
 				
 				$table = 's_users';
@@ -21,7 +21,7 @@
 				
 				return $obj[0];
 			}
-			public function load_all_user_objects() {
+			function load_all_user_objects() {
 				global $db;
 				
 				$table = 's_users';
@@ -37,7 +37,8 @@
 				}
 				
 				return $obj;
-			}public function get_friends($user_id) {
+			}
+			function get_friends($user_id) {
 				global $db;
 				
 				$table = 's_friends';
@@ -55,7 +56,7 @@
 				
 				return $friend_ids;
 			}
-			public function get_status_objects($user_id) {
+			function get_status_objects($user_id) {
 				global $db;
 				
 				$table = 's_status';
@@ -81,7 +82,7 @@
 				return $status_objects;
 			}
 			
-			public function get_message_objects($user_id) {
+			function get_message_objects($user_id) {
 				global $db;
 				
 				$table = 's_messages';
@@ -96,7 +97,7 @@
 				return $messages;
 			}
 			
-			public function do_user_directory() {
+			function do_user_directory() {
 				$users = $this->load_all_user_objects();
 				
 				foreach ( $users as $user ) { ?>
@@ -107,7 +108,7 @@
 				<?php
 				}
 			}
-			public function do_friends_list($friends_array) {
+			function do_friends_list($friends_array) {
 
 				foreach ( $friends_array as $friend_id ) {
 					$users[] = $this->load_user_object($friend_id);
@@ -122,7 +123,7 @@
 				}
 			}
 			
-			public function do_news_feed($user_id) {
+			function do_news_feed($user_id) {
 				$status_objects = $this->get_status_objects($user_id);
 				
 				foreach ( $status_objects as $status ) {?>
@@ -135,7 +136,7 @@
 				}
 			}
 			
-			public function do_inbox($user_id) {
+			function do_inbox($user_id) {
 				$message_objects = $this->get_message_objects($user_id);
 				
 				foreach ( $message_objects as $message ) {?>

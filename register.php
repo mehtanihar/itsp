@@ -1,9 +1,12 @@
 <?php
 	
+	session_start();
 
-	
-	
-?>
+
+
+
+
+	?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,41 +42,37 @@
   <body>
 
     <!-- Fixed navbar -->
+   
+
+
+ <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-right">
-          <form class="form-inline" role="form" method="post">
-			  <div class="form-group">
-			    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-			  </div>
-			  <div class="form-group">
-			    <label class="sr-only" for="exampleInputPassword2">Password</label>
-			    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-			  </div>
-			  <div class="checkbox">
-			    <label style="color:white">
-			      <input type="checkbox"> Remember me
-			    </label>
-			  </div>
-			  <button type="submit" class="btn btn-default">Sign in</button>
-			</form>
+        
+        <div class="navbar-collapse collapse navbar-right" >
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="homepage.php">HOME</a></li>
+            <li><a href="profile.php">PROFILE</a></li>
+         
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">SOCIALIZE <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="addfriend.php">FRIEND REQUESTS</a></li>
+                <li><a href="inbox.php">MESSAGES</a></li>
+                <li><a href="notifications.php">NOTIFICATIONS</li>
+                <li><a href="logout.php">Logout</a></li>
+             
+              </ul>
+            </li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </div>
+    </div><br><br>
+       
 
 
 
-<div class="conatiner mtb">
+<div class="container mtb">
 <div class="progress progress-striped active">
   <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
    20% Completed
@@ -86,7 +85,7 @@
 	 Register
 	 ***************************************************************************************************************** --> 
 <center>
-<form class="container mtb" action="register2.php" method="POST">
+<form class="container mtb" id="myform1" method="post">
   <fieldset>
     <div id="legend">
       <legend class=""><b> Step 1: Basic Information</b></legend>
@@ -95,7 +94,7 @@
 <b>1. Enter your birthdate:<br> </b>
    <!-- Split button -->
 
- <select name="date" >
+ <select name="date">
  <option value="na">Date</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -261,14 +260,14 @@
 </select>
 <br><br>
 <b>2. You are: </b>
-<input type="radio" name="sex" value="male" >Male
-<input type="radio" name="sex" value="female">Female
+<input type="radio" name="sex" value="male" required>Male
+<input type="radio" name="sex" value="female" required>Female
 <br><br>
 <b>3. You live at: </b> <br>
-<textarea rows="1" cols="30"></textarea>
+<textarea name="place_of_res" rows="1" cols="30"></textarea>
  <br><br>
  <b>4. Enter your phone number:</b> <br>
-<textarea rows="1" cols="30"></textarea>
+<textarea name="mobile_number" rows="1" cols="30"></textarea>
 
  
     
@@ -278,7 +277,7 @@
 <div class="form group">
       <a href="index.php" class="btn btn-theme">Back</a>
        <a href="register2.php" class="btn btn-theme">Skip</a>
-      <input class="btn btn-theme" type="submit" value="Proceed"></div>
+      <button class="btn btn-theme" id="submit">Proceed</button></div>
    
  
   
@@ -327,7 +326,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/retina-1.1.0.js"></script>
 	<script src="assets/js/jquery.hoverdir.js"></script>
@@ -418,36 +417,28 @@
 		setPortfolio();          
 	});
 })(jQuery);
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
 
-$("#signup").validate({
-rules:{
-fname:"required",
-lname:"required",
 
-email:{
 
-required:true,
-
-email: true
-
-},
-passwd:{
-required:true,
-minlength: 8
-},
-conpasswd:{
-required:true,
-equalTo: "#passwd"
-},
-gender:"required"
-},
-errorClass: "help-inline"
-});
-
-});
+$("#myform1").submit(function(f){
+	f.preventDefault();
+	jQuery.ajax({
+		url:"reg.php",
+		data:$(this).serialize(),
+		type:'post',
+		success:function(data){
+			console.log(data);
+			
+			if(data=="done"){
+		<?php if(isset($_SESSION['user'])){
+	     echo "hello";} ?>
+			}
+		},
+		error:function(){
+			alert("Network error");
+		}
+	});
+})
 
 </script>
 
